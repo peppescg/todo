@@ -1,12 +1,20 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-export const InputText = ({ id, className, placeholder, value, onChange }) => (
+export const InputText = ({
+  id,
+  className,
+  placeholder,
+  value,
+  onChange,
+  isError = false,
+}) => (
   <InputTextStyled
     id={id}
     type="text"
     placeholder={placeholder}
     value={value}
+    isError={isError}
     className={className}
     onChange={onChange}
   />
@@ -27,15 +35,23 @@ const InputTextStyled = styled.input`
   height: 40px;
 
   ${(props) => css`
-    color: ${props.theme.colors.primaryDark};
+    /* color: ${props.theme.colors.primaryDark}; */
     border-bottom: 1px solid ${props.theme.colors.primaryLight};
     font-size: ${props.theme.fontSizes.large};
+    &::placeholder {
+      color: ${({ isError }) =>
+        (isError && props.theme.colors.errorDark) ||
+        props.theme.colors.primaryDark};
+    }
+
     &:hover {
       border-bottom: 1px solid ${props.theme.colors.primaryDark};
     }
     @media (max-width: ${props.theme.breakpoints.m}px) {
       &::placeholder {
-        color: ${props.theme.colors.textLight};
+        color: ${({ isError }) =>
+          (isError && props.theme.colors.errorLight) ||
+          props.theme.colors.textLight};
       }
     }
 

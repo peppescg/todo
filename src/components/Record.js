@@ -27,14 +27,11 @@ const Record = () => {
   const setErrorForTodoMissing = (events, action) =>
     events
       .filter((todo) => todo.payload.id === action.payload.id)
-      .some((todo) => {
-        console.log(todo);
-        return todo.type === actions.ADD_TODO;
-      })
+      .some((todo) => todo.type === actions.ADD_TODO)
       ? null
       : dispatch({
           type: actions.SET_ERROR,
-          payload: "You need a todo for apply a 'complete' event!",
+          payload: "You need a todo to apply a 'complete' event!",
         });
 
   return (
@@ -94,7 +91,7 @@ const Wrapper = styled.div`
 const EventsSection = styled.section`
   overflow: hidden;
   overflow-y: scroll;
-  height: 50vh;
+  height: 35vh;
   ${(props) => css`
     @media (max-width: ${props.theme.breakpoints.s}px) {
       display: none;

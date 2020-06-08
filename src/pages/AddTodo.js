@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "@reach/router";
+import { v1 as uuidv1 } from "uuid";
 import styled, { ThemeContext } from "styled-components";
 import { Context } from "../state";
 import actions from "../state/actions";
@@ -19,20 +20,26 @@ const AddTodo = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [isDone, setStatus] = useState(false);
+  const [errorName, setErrorName] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!name) {
+      setErrorName(true);
+      return;
+    }
     dispatch({ type: actions.SET_LOADING, payload: true });
     // simulate async action for trigger spinner
     setTimeout(() => {
       dispatch({
         type: actions.ADD_TODO,
-        payload: { isDone, description, name },
+        payload: { id: uuidv1(), isDone, description, name },
       });
       dispatch({ type: actions.SET_LOADING, payload: false });
       navigate("/");
     }, 1000);
   }
+
   return (
     <>
       {isMobile ? (
@@ -45,6 +52,7 @@ const AddTodo = () => {
               <InputText
                 id="name"
                 type="text"
+                isError={errorName}
                 placeholder="Insert a title"
                 value={name}
                 onChange={(e) => setName(e.target.value)}

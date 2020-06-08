@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "@reach/router";
 import styled, { ThemeContext, css } from "styled-components";
+import { v1 as uuidv1 } from "uuid";
 import { Context } from "../state";
 import actions from "../state/actions";
 import { Checkbox, CheckboxWrapper } from "./Checkbox";
@@ -18,15 +19,20 @@ const AddTodoMobile = () => {
   const [description, setDescription] = useState("");
   const [isDone, setStatus] = useState(false);
   const [isModalOpen, setModal] = useState(true);
+  const [errorName, setErrorName] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!name) {
+      setErrorName(true);
+      return;
+    }
     dispatch({ type: actions.SET_LOADING, payload: true });
     // simulate async action for trigger spinner
     setTimeout(() => {
       dispatch({
         type: actions.ADD_TODO,
-        payload: { isDone, description, name },
+        payload: { id: uuidv1(), isDone, description, name },
       });
       dispatch({ type: actions.SET_LOADING, payload: false });
       navigate("/");
@@ -48,6 +54,7 @@ const AddTodoMobile = () => {
               <InputText
                 id="name"
                 type="text"
+                isError={errorName}
                 placeholder="Insert a title"
                 value={name}
                 className="input-text-mobile"
@@ -94,6 +101,10 @@ const Form = styled.form`
 
   ${CheckboxWrapper} {
     margin-top: 3em;
+  }
+
+  ${SubmitWrapper} {
+    margin-top: 5em;
   }
 `;
 

@@ -1,5 +1,4 @@
 import actions from "./actions";
-import { v1 as uuidv1 } from "uuid";
 
 export const actionHandlers = {
   [actions.ADD_TODO]: (state, action) => ({
@@ -7,7 +6,6 @@ export const actionHandlers = {
     error: null,
     todos: [
       {
-        id: uuidv1(),
         creationDate: new Date().toISOString(),
         ...action.payload,
       },

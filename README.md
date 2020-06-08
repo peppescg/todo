@@ -44,7 +44,7 @@ Recording logic that I implemented following the requirements are:
 - **RECORD** btn start to record CREATE, UPDATE, DELETE actions and save to localStorage, I use localStorage beacuse it was the quick solution and it is good enough for this use case.
 - **STOP** stop the recording
 - **CLEAR** clear all the actions saved into localStorage
-- **PLAY** reset the state to initial state with no todos, retrieve all teh actions recording after `Record` btn is typed, and dispatch all the actions with 1000ms between every action.
+- **PLAY** reset the state to initial state with no todos, retrieve all teh actions recording after `Record` btn is typed, and dispatch all the actions with 1000ms gap between every action.
 
 I understand from requiremtns, that the actions localStorage must be delete only with `CLEAR` btn so if I refresh the state of app will be reset to the initial state.
 
