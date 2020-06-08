@@ -49,5 +49,6 @@
       "@testing-library/jest-dom/extend-expect",
       "<rootDir>/src/setupTests.js"
     ]
-  }
+  },
+  "sideEffects": false
 }
