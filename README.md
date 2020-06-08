@@ -56,7 +56,7 @@ I implemented a log info, for helping me to know how the actions are dispatched.
 ## Stack architecture
 
 I use styled-component, the reason is the possibility to have a component reusable and self-contained, typical of css-in-js. The second reason is the possibility to configure a theme provider with context react API to share theme styles. For routing, I used @reach-router because it is lither than react-router and it fits the scope of the app.
-The detail and addTodo routes are code split using react lazy and suspence for fallback content. I also implemented ErrorBoundary with a HOC to catch an error. I used it some years ago in a big project and I think It is very helpful to avoid blank pages.
+The detail and addTodo routes are code split using react lazy and suspence for fallback content. Other feature implemented is the tree-shaking. I also implemented ErrorBoundary with a HOC to catch an error. I used it some years ago in a big project and I think It is very helpful to avoid blank pages.
 For the layout I used css grid, I think it is very powerful and removed a lot of complexity about the css and the layout responsiveness.
 For testing, I used react-testing-library, that it is suggested by the react community and jest as a framework. In my opinion, I prefer cypress for layout regression and smoke tests and used jest for business logic.
 
@@ -65,4 +65,5 @@ For testing, I used react-testing-library, that it is suggested by the react com
 - useMemo and useCallback are expensive, if the app is bigger they are could be helpful 
 - the footer is horrible and maybe not only it :smile:
 - input search for the todo filter 
+- refactor of structure folder with major reusability of the component
  
