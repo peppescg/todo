@@ -35,7 +35,7 @@ const InputTextStyled = styled.input`
   height: 40px;
 
   ${(props) => css`
-    /* color: ${props.theme.colors.primaryDark}; */
+    color: ${props.theme.colors.primaryDark};
     border-bottom: 1px solid ${props.theme.colors.primaryLight};
     font-size: ${props.theme.fontSizes.large};
     &::placeholder {

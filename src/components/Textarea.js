@@ -26,5 +26,8 @@ const TextareaStyled = styled.textarea`
     &:focus {
       border: 1px solid ${props.theme.colors.primaryDark};
     }
+    &::placeholder {
+      color: ${props.theme.colors.primaryDark};
+    }
   `}
 `;
