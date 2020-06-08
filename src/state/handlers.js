@@ -4,6 +4,7 @@ import { v1 as uuidv1 } from "uuid";
 export const actionHandlers = {
   [actions.ADD_TODO]: (state, action) => ({
     ...state,
+    error: null,
     todos: [
       {
         id: uuidv1(),
@@ -15,10 +16,12 @@ export const actionHandlers = {
   }),
   [actions.DELETE_TODO]: (state, action) => ({
     ...state,
+    error: null,
     todos: state.todos.filter((todo) => todo.id !== action.payload),
   }),
   [actions.UPDATE_TODO]: (state, action) => ({
     ...state,
+    error: null,
     todos: state.todos.map(
       (todo) =>
         (todo.id !== action.payload.id && todo) || {
@@ -29,6 +32,7 @@ export const actionHandlers = {
   }),
   [actions.COMPLETE_TODO]: (state, action) => ({
     ...state,
+    error: null,
     todos: state.todos.map(
       (todo) =>
         (todo.id !== action.payload.id && todo) || {
@@ -47,12 +51,14 @@ export const actionHandlers = {
   }),
   [actions.SET_WINDOW_SIZE]: (state, action) => ({
     ...state,
+    error: null,
     isMobile: action.payload,
   }),
   // recording actionsHandlers
   [actions.SET_RECORD]: (state, action) => ({
     ...state,
     record: "record",
+    error: null,
   }),
   [actions.SET_PLAY_RECORD]: (state, action) => ({
     ...state,
@@ -61,9 +67,11 @@ export const actionHandlers = {
   [actions.SET_CLEAR_RECORD]: (state, action) => ({
     ...state,
     record: "clear",
+    error: null,
   }),
   [actions.SET_STOP_RECORD]: (state, action) => ({
     ...state,
     record: "stop",
+    error: null,
   }),
 };

@@ -116,6 +116,10 @@ const Form = styled.form`
   ${CheckboxWrapper} {
     margin-top: 3em;
   }
+
+  ${BtnGroups} {
+    margin-top: 5em;
+  }
 `;
 
 const ModalLabel = styled(Label)`

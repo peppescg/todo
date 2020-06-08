@@ -18,8 +18,24 @@ const Record = () => {
   }, [record]);
 
   function setDispatchDelay(action) {
-    action && dispatch({ type: action.type, payload: action.payload });
+    if (action) {
+      dispatch({ type: action.type, payload: action.payload });
+      setErrorForTodoMissing(events, action);
+    }
   }
+
+  const setErrorForTodoMissing = (events, action) =>
+    events
+      .filter((todo) => todo.payload.id === action.payload.id)
+      .some((todo) => {
+        console.log(todo);
+        return todo.type === actions.ADD_TODO;
+      })
+      ? null
+      : dispatch({
+          type: actions.SET_ERROR,
+          payload: "You need a todo for apply a 'complete' event!",
+        });
 
   return (
     <Wrapper>

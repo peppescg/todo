@@ -8,7 +8,7 @@ import TodoMobile from "../components/TodoMobile";
 
 const Home = () => {
   const { fontSizes } = useContext(ThemeContext);
-  const [{ todos, isMobile }] = useContext(Context);
+  const [{ todos, error, isMobile }] = useContext(Context);
   const navigate = useNavigate();
 
   return (
@@ -16,6 +16,7 @@ const Home = () => {
       <WrapperAddButton data-testid="add-todo" onClick={() => navigate("add")}>
         <AddTodo size={fontSizes.xxlarge} />
       </WrapperAddButton>
+      {error && <Error>{error}</Error>}
       {isMobile ? (
         <>
           <List>
@@ -56,6 +57,15 @@ const List = styled.section`
   overflow: hidden;
   overflow-y: scroll;
   height: 84vh;
+`;
+
+const Error = styled.p`
+  text-align: center;
+  margin-bottom: 1em;
+  ${(props) => css`
+    font-size: ${props.theme.fontSizes.large};
+    color: ${props.theme.colors.errorDark};
+  `};
 `;
 
 const AddTodo = styled(Plus)`

@@ -19,12 +19,11 @@ const initialState = {
   record: "stop",
 };
 
-const log = (state, action) => {
+const log = (action) => {
   getValueFromLS("logTodo")
     ? console.info("Event: ", {
         action: action.type,
         payload: action.payload,
-        newState: state,
       })
     : null;
 };
@@ -34,7 +33,7 @@ const log = (state, action) => {
  * Stop evt is default
  */
 const saveToLS = ({ record }, action) => {
-  log();
+  log(action);
   if (record === "record") {
     if (actionsToRecord(action.type)) {
       let recordingList = getValueFromLS(recordingKey);
