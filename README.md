@@ -1,16 +1,32 @@
 # TODO APP
 Create, update, delete todo recording the actions into localStorage
-## Command to run application
+## Commands to run application
+**Run development mode:**
+```sh
+cd my-app
+yarn
 
-Run development mode: `yarn start`
+yarn start
 
-Run production mode: `yarn build`
+```
+Access http://localhost:3000/
 
-Serve build: `yarn serve`
+**Run production mode:**
+```sh
 
-Run test: `yarn test`
+yarn build
+
+yarn serve
+
+```
+Access http://localhost:5000/
 
 
+**Run test:**
+ ```sh 
+yarn test
+``` 
+-----
 
 ## Description
 
