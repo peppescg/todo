@@ -19,6 +19,10 @@ const initialState = {
   record: "stop",
 };
 
+/**
+ * Log to console
+ * Set to LS logTodo: true
+ */
 const log = (action) => {
   getValueFromLS("logTodo")
     ? console.info("Event: ", {
@@ -54,6 +58,7 @@ const saveToLS = ({ record }, action) => {
 
 /**
  * Modify the state.
+ * Through action type retrieve actionHandlers for update state
  * @returns {Object}
  */
 const reducer = (state, action) => {
@@ -61,7 +66,6 @@ const reducer = (state, action) => {
   if (handler) {
     const newState = handler(state, action);
     saveToLS(newState, action);
-    // if Play Record btn is typed, reset to initialState with 'record': "play" otherwise return the state updated
     return action.type === actions.SET_PLAY_RECORD
       ? { ...initialState, record: "play" }
       : newState;
