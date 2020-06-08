@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, Suspense } from "react";
-import { Router, Link, useMatch, Roure } from "@reach/router";
+import { Router, Link, useMatch } from "@reach/router";
 import styled, { css, ThemeContext } from "styled-components";
 import { Home as Homepage } from "@styled-icons/icomoon";
 import Home from "./pages/Home";
@@ -8,8 +8,9 @@ import actions from "./state/actions";
 import { ModalProvider } from "./components/Modal";
 import { debounce, isMobileSize } from "./utils";
 import Record from "./components/Record";
+import Loader from "./components/Loader";
 
-const LazyDetail = React.lazy(() => import("./pages/Home"));
+const LazyDetail = React.lazy(() => import("./pages/Detail"));
 const LazyAddTodo = React.lazy(() => import("./pages/AddTodo"));
 
 const App = () => {
@@ -42,7 +43,13 @@ const App = () => {
 
         <ModalProvider>
           <Wrapper>
-            <Suspense fallback={<div>Loading detail info...</div>}>
+            <Suspense
+              fallback={
+                <LoaderWrapper>
+                  <Loader loading={true} size={"58px"} />
+                </LoaderWrapper>
+              }
+            >
               <Router>
                 <Home path="/" />
                 <LazyDetail path="detail/:id" />
@@ -152,4 +159,10 @@ const Footer = styled.footer`
       margin-left: 2vw;
     }
   `}
+`;
+
+const LoaderWrapper = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
 `;
