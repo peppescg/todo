@@ -1,7 +1,7 @@
 # TODO APP
 Create, update, delete todo recording the actions into localStorage
 ## Commands to run application
-**Run development mode:**
+**Run development mode to http://localhost:3000**
 ```sh
 cd my-app
 yarn
@@ -9,9 +9,8 @@ yarn
 yarn start
 
 ```
-Access http://localhost:3000/
 
-**Run production mode:**
+**Run production mode http://localhost:5000/**
 ```sh
 
 yarn build
@@ -19,8 +18,6 @@ yarn build
 yarn serve
 
 ```
-Access http://localhost:5000/
-
 
 **Run test:**
  ```sh 
@@ -63,7 +60,7 @@ For testing, I used react-testing-library, that it is suggested by the react com
 ## Some next features
 - Performance optimization using service-worker and pwa, also webpack configuration can be modified for better result
 - useMemo and useCallback are expensive, if the app is bigger they are could be helpful 
-- the footer is horrible and maybe not only it :smile:
+- the footer is horrible and maybe not only that :smile:
 - input search for the todo filter 
 - refactor of structure folder with major reusability of the component
  
