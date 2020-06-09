@@ -38,26 +38,26 @@ const Record = () => {
     <Wrapper>
       <Button
         type="default"
-        value="Record"
+        value="Rec"
         isActive={record}
         onClick={() => dispatch({ type: actions.SET_RECORD })}
       />
       <Button
         type="warning"
         isActive={record}
-        value="Stop Recording"
+        value="Stop"
         onClick={() => dispatch({ type: actions.SET_STOP_RECORD })}
       />
       <Button
         type="error"
         isActive={record}
-        value="Clear Recording"
+        value="Clear"
         onClick={() => dispatch({ type: actions.SET_CLEAR_RECORD })}
       />
       <Button
         type="success"
         isActive={record}
-        value="Play Recording"
+        value="Play"
         onClick={() => dispatch({ type: actions.SET_PLAY_RECORD })}
       />
       {events.length > 0 && (
