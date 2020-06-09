@@ -13,8 +13,12 @@ const Home = () => {
 
   return (
     <>
-      <WrapperAddButton data-testid="add-todo" onClick={() => navigate("add")}>
-        <AddTodo size={fontSizes.xxlarge} />
+      <WrapperAddButton>
+        <AddTodo
+          size={"3vh"}
+          data-testid="add-todo"
+          onClick={() => navigate("add")}
+        />
       </WrapperAddButton>
       {error && <Error>{error}</Error>}
       {isMobile ? (
@@ -72,7 +76,7 @@ const AddTodo = styled(Plus)`
   cursor: pointer;
   border: 5px solid;
   padding: 0.5vw;
-  border-radius: 50px;
+  border-radius: 30px;
   ${(props) => css`
     color: ${props.theme.colors.primaryLight};
     &:hover {
@@ -82,10 +86,10 @@ const AddTodo = styled(Plus)`
 `;
 
 const WrapperAddButton = styled.div`
-  margin-left: 17vw;
+  text-align: center;
   ${(props) => css`
     @media (max-width: ${props.theme.breakpoints.m}px) {
-      margin-left: 3vw;
+      margin: 1vh 3vw;
       z-index: 1;
     }
   `}

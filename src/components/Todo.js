@@ -57,7 +57,6 @@ const Wrapper = styled.article`
       width: 40vw;
     }
   `}
-  border-radius: 5px;
   &:hover {
     background-color: #f5fafd;
   }

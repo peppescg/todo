@@ -92,6 +92,7 @@ const IconHome = styled(Homepage)`
 
 const Wrapper = styled.div`
   grid-row: 2;
+  margin: 1vw;
 `;
 
 const Nav = styled.nav`

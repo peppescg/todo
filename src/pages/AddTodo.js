@@ -88,7 +88,6 @@ const AddTodo = () => {
 export default withErrorHandler(AddTodo);
 
 const Form = styled.form`
-  margin: 0 2em;
   ${InputWrapper} {
     padding: 3vh 0;
   }

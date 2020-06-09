@@ -19,6 +19,9 @@ const Detail = ({ id }) => {
   const [{ loading, todos, isMobile }, dispatch] = useContext(Context);
   const navigate = useNavigate();
   const todo = todos.find((todo) => todo.id === id);
+  if (!todo) {
+    navigate("/");
+  }
   const [name, setName] = useState((todo && todo.name) || "");
   const [description, setDescription] = useState(
     (todo && todo.description) || ""
@@ -101,13 +104,11 @@ const Detail = ({ id }) => {
 export default withErrorHandler(Detail);
 
 const Form = styled.form`
-  margin: 0 2em;
-  padding: 1em 0;
   ${InputWrapper} {
-    padding: 2vh 0;
+    padding: 3vh 0;
   }
-  ${BtnGroups} {
-    margin: 2em 0;
+  ${CheckboxWrapper} {
+    margin: 3vh 0;
   }
 `;
 
