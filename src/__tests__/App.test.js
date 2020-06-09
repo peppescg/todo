@@ -48,7 +48,9 @@ it("Add todo - success", async () => {
   } = renderWithRouter(<App />);
 
   await navigate("/add");
-  expect(screen.getByPlaceholderText("Insert a title")).toBeInTheDocument();
+  await waitFor(() =>
+    expect(screen.getByPlaceholderText("Insert a title")).toBeInTheDocument()
+  );
 
   fireEvent.change(screen.getByPlaceholderText("Insert a title"), {
     target: { value: "Lorem ipsum" },
@@ -69,7 +71,9 @@ it("Remove todo - success", async () => {
   } = renderWithRouter(<App />);
 
   await navigate("/add");
-  expect(screen.getByPlaceholderText("Insert a title")).toBeInTheDocument();
+  await waitFor(() =>
+    expect(screen.getByPlaceholderText("Insert a title")).toBeInTheDocument()
+  );
 
   fireEvent.change(screen.getByPlaceholderText("Insert a title"), {
     target: { value: "Lorem ipsum" },
@@ -95,7 +99,9 @@ it("Edit todo - success", async () => {
   } = renderWithRouter(<App />);
 
   await navigate("/add");
-  expect(screen.getByPlaceholderText("Insert a title")).toBeInTheDocument();
+  await waitFor(() =>
+    expect(screen.getByPlaceholderText("Insert a title")).toBeInTheDocument()
+  );
 
   fireEvent.change(screen.getByPlaceholderText("Insert a title"), {
     target: { value: "Lorem ipsum test" },
@@ -112,6 +118,9 @@ it("Edit todo - success", async () => {
   const id = document.querySelector("article").id;
 
   await navigate(`/detail/${id}`);
+  await waitFor(() =>
+    expect(screen.getByDisplayValue("Lorem ipsum test")).toBeInTheDocument()
+  );
 
   const newName = "Dummy name";
   fireEvent.change(document.querySelector("input"), {

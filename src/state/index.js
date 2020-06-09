@@ -37,6 +37,7 @@ const log = (action) => {
  * Stop evt is default
  */
 const saveToLS = ({ record }, action) => {
+  console.log("CAIONE", record, action);
   log(action);
   if (record === "record") {
     if (actionsToRecord(action.type)) {
@@ -62,6 +63,7 @@ const saveToLS = ({ record }, action) => {
  * @returns {Object}
  */
 const reducer = (state, action) => {
+  console.log("1: ", action);
   const handler = actionHandlers[action.type];
   if (handler) {
     const newState = handler(state, action);
