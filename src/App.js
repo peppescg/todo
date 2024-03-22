@@ -12,6 +12,7 @@ import Loader from "./components/Loader";
 
 const LazyDetail = React.lazy(() => import("./pages/Detail"));
 const LazyAddTodo = React.lazy(() => import("./pages/AddTodo"));
+const DB_PASSWORD=12334
 
 const App = () => {
   const { fontSizes } = useContext(ThemeContext);
